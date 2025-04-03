@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+:root {
+  --primary-color: #1976d2;
+  --background-color: #F2F2F2;
+  --white-color: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--background-color);
+}
+
+// Custom Material Theme
+.mat-mdc-raised-button.mat-primary {
+  background-color: var(--primary-color) !important;
+  color: var(--white-color) !important;
+}
+
+.mat-mdc-card {
+  background-color: var(--white-color) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: var(--background-color) !important;
+}
+
+// Custom button styles
+button[mat-raised-button] {
+  border-radius: 20px !important;
+  padding: 0 24px !important;
+}
+
+// Dialog styles
+.add-employee-dialog {
+  .mat-mdc-dialog-container {
+    padding: 0;
+  }
+
+  .mdc-dialog__surface {
+    border-radius: 12px !important;
+    overflow: hidden;
+  }
+
+  .mat-mdc-dialog-content {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// Form field styles
+.mat-mdc-form-field {
+  .mat-mdc-form-field-flex {
+    background-color: #f8f9fa;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    background-color: transparent;
+  }
+
+  .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 8px;
+  }
+}
