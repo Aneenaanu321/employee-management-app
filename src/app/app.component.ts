@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="app-container" [ngClass]="{'auth-layout': isAuthPage}">
       <app-navbar #navbar (sidebarToggle)="onSidebarToggle($event)" *ngIf="!isAuthPage"></app-navbar>
-      <app-sidebar [(isOpen)]="isSidebarOpen" *ngIf="!isAuthPage"></app-sidebar>
+      <app-sidebar [isOpen]="isSidebarOpen" *ngIf="!isAuthPage"></app-sidebar>
       <main [ngClass]="{'main-content': !isAuthPage, 'auth-content': isAuthPage}">
         <router-outlet></router-outlet>
       </main>

@@ -5,6 +5,7 @@
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  background-color: #f5f5f5;
 }
 
 .signin-card {
@@ -13,7 +14,7 @@
   padding: 40px 30px;
   border-radius: 8px;
   background: white;
-  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
   position: relative;
   margin-top: 40px;
 
@@ -29,6 +30,7 @@
     top: -40px;
     left: 50%;
     transform: translateX(-50%);
+    box-shadow: 0 2px 10px rgba(33, 150, 243, 0.3);
 
     mat-icon {
       color: white;
@@ -61,7 +63,7 @@
         }
 
         .mat-mdc-text-field-wrapper {
-          background-color: transparent;
+          background-color: #f8f9fa;
           padding: 0 !important;
         }
 
@@ -141,6 +143,7 @@
 @media (max-width: 480px) {
   .signin-container {
     padding: 16px;
+    min-height: 100vh;
   }
 
   .signin-card {
@@ -172,6 +175,10 @@
         margin-top: 12px;
         height: 40px;
       }
+    }
+
+    .signin-footer {
+      margin-top: 20px;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,11 +19,11 @@ import { Router } from '@angular/router';
     <div class="sidebar-overlay" [class.active]="isOpen" (click)="closeSidebar()"></div>
     <div class="sidebar" [class.sidebar-open]="isOpen">
       <div class="sidebar-header">
-        Employee Management
+        Stock Portfolio Dashboard
       </div>
       <div class="sidebar-content">
         <a class="sidebar-item" routerLink="/dashboard" routerLinkActive="active">
-          <mat-icon class="sidebar-icon">dashboard</mat-icon>
+          <mat-icon class="sidebar-icon">apps</mat-icon>
           <span>Dashboard</span>
         </a>
         <a class="sidebar-item" routerLink="/settings" routerLinkActive="active">
@@ -39,7 +39,7 @@ import { Router } from '@angular/router';
           <span>About</span>
         </a>
         <a class="sidebar-item" routerLink="/contact" routerLinkActive="active">
-          <mat-icon class="sidebar-icon">contact_support</mat-icon>
+          <mat-icon class="sidebar-icon">help_outline</mat-icon>
           <span>Contact</span>
         </a>
         <div class="sidebar-divider"></div>
@@ -89,7 +89,7 @@ import { Router } from '@angular/router';
 
     .sidebar-header {
       height: 50px;
-      background-color: #2196f3;
+      background-color: #1976d2;
       color: white;
       display: flex;
       align-items: center;
@@ -121,7 +121,7 @@ import { Router } from '@angular/router';
       }
 
       &.active {
-        background-color: #2196f3;
+        background-color: #1976d2;
         color: white;
 
         .sidebar-icon {
@@ -151,7 +151,6 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
   @Input() isOpen: boolean = false;
-  @Output() isOpenChange = new EventEmitter<boolean>();
 
   constructor(
     private authService: AuthService,
@@ -160,16 +159,21 @@ export class SidebarComponent {
 
   closeSidebar(): void {
     this.isOpen = false;
-    this.isOpenChange.emit(this.isOpen);
   }
 
   async signOut(): Promise<void> {
     try {
-      this.closeSidebar();
-      await this.authService.signOut();
+      // Clear the auth state
+      this.authService.signOut();
+      
+      // Navigate to signin page
       await this.router.navigate(['/signin']);
+      
+      // Reload the page to ensure clean state
+      window.location.reload();
     } catch (error) {
       console.error('Error during sign out:', error);
+      // Still try to navigate to signin even if there's an error
       this.router.navigate(['/signin']);
     }
   }

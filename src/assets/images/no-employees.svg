@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="200" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .primary { fill: #2196f3; }
+    .secondary { fill: #90caf9; }
+    .accent { fill: #1976d2; }
+    .light { fill: #bbdefb; }
+  </style>
+  <!-- Background shape -->
+  <path class="light" d="M120 190c55.228 0 100-44.772 100-100S175.228-10 120-10 20 34.772 20 90s44.772 100 100 100z" opacity=".1"/>
+  <!-- Person body -->
+  <path class="primary" d="M140 80c0 11.046-8.954 20-20 20s-20-8.954-20-20 8.954-20 20-20 20 8.954 20 20z"/>
+  <!-- Search icon -->
+  <circle class="secondary" cx="180" cy="40" r="15" stroke-width="2"/>
+  <path class="accent" d="M188 48l8 8" stroke-width="2" stroke-linecap="round"/>
+  <!-- Person details -->
+  <path class="primary" d="M160 120H80c-11.046 0-20 8.954-20 20v20h120v-20c0-11.046-8.954-20-20-20z"/>
+</svg> 
