@@ -91,10 +91,15 @@ mat-card-header {
   justify-content: center;
   height: 100%;
   text-align: center;
+  min-height: 400px;
 
   .empty-state-image {
-    max-width: 300px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
     margin-bottom: 24px;
+    display: block;
   }
 
   h2 {
@@ -160,7 +165,7 @@ mat-card-header {
     min-height: calc(100vh - 88px); // Adjust for smaller navbar + padding on mobile
     
     .empty-state-image {
-      max-width: 240px;
+      width: 240px;
     }
 
     h2 {
@@ -192,8 +197,11 @@ mat-card-header {
   }
 
   .empty-state {
+    min-height: 300px;
+
     .empty-state-image {
-      max-width: 240px;
+      width: 150px;
+      height: 150px;
     }
 
     h2 {
