@@ -1,0 +1,49 @@
+<div class="employee-form-container">
+  <header>
+    <button mat-icon-button routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>{{ isEditMode ? 'Edit' : 'Add' }} Employee</h1>
+  </header>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="employee-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter name">
+      <mat-error>{{ getErrorMessage('name') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Enter email" type="email">
+      <mat-error>{{ getErrorMessage('email') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Designation</mat-label>
+      <input matInput formControlName="designation" placeholder="Enter designation">
+      <mat-error>{{ getErrorMessage('designation') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" placeholder="Enter phone number" type="tel">
+      <mat-error>{{ getErrorMessage('phone') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Joining Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="joiningDate" placeholder="Choose date">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error>{{ getErrorMessage('joiningDate') }}</mat-error>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-button type="button" routerLink="/">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!employeeForm.valid">
+        {{ isEditMode ? 'Update' : 'Add' }} Employee
+      </button>
+    </div>
+  </form>
+</div> 

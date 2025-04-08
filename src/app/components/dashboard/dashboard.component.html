@@ -1,0 +1,73 @@
+<div class="dashboard-container">
+  <div class="content-wrapper">
+    <!-- Table view when there are employees -->
+    <table mat-table [dataSource]="employees" class="employee-table" *ngIf="employees.length > 0">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let employee">{{employee.firstName}} {{employee.lastName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let employee">{{employee.email}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>Position</th>
+        <td mat-cell *matCellDef="let employee">{{employee.position}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef>Department</th>
+        <td mat-cell *matCellDef="let employee">{{employee.department}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="joinDate">
+        <th mat-header-cell *matHeaderCellDef>Join Date</th>
+        <td mat-cell *matCellDef="let employee">{{employee.joinDate | date}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let employee">
+          <span class="status-badge" [class.active]="employee.status === 'active'">
+            {{employee.status}}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let employee">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editEmployee(employee)">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="deleteEmployee(employee)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Empty state when no employees -->
+    <div class="empty-state" *ngIf="employees.length === 0">
+      <img src="/images/user.jpg" alt="No employees found" class="empty-state-image">
+      <h2>No employee records found</h2>
+    </div>
+  </div>
+
+  <!-- Floating action button -->
+  <button mat-fab class="add-button" (click)="addEmployee()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
